@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vidyamandir</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link rel="stylesheet" href="{% static "base.css" %}">
+  {% block imports %}
+  {% endblock %}
+</head>
+<body>
+  {% block navbar %}
+    <div class="Navbar_section">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link {% block home_link %} {% endblock %}" aria-current="page" href="{% url "home" %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% block pics_link %} {% endblock %}" href="{% url "show_single_picture" %}">Pictures</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% block galleries_link %} {% endblock %}" href="{% url 'show_galleries' %}">Galleries</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% block add_gallery_link %} {% endblock %}" href="{% url 'add_gallery' %}">Add Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% block add_picture_link %} {% endblock %}" href="{% url 'add_single_picture' %}">Add Picture</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout_user' %}">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  {% endblock %}
+  {% block body %}
+  {% endblock %}
+  {% block scripts %}
+  {% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

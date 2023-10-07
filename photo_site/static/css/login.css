@@ -1,0 +1,33 @@
+html{
+  background-image: url("/static/images/login_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login_form{
+  background-color: white;
+  padding: 30px;
+  margin-left: 20%;
+}
+
+.vmc_logo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.login_label{
+  font-size: 70%;
+  font-family: Roboto;
+}
+
+.requeired_star{
+  color: red;
+}
+
+.forgot_password{
+  font-size: 70%;
+  text-decoration: none;
+  color: #333333;
+}

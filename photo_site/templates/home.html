@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block home_link %}
+active
+{% endblock %}
+
+{% block body %}
+  <div class="Home_header mt-5 mb-5">
+    <h1 class="text-center" style="font-family:cursive; font-size:10em">You And I</h1>
+  </div>
+  <div class="Home_About m-5 p-5 fs-4 rounded" style="background-color:#fc7e9c;">
+    <p>Dear Bella, <br> I know that these last nine moths haven't been easy. There were lovely times and there were hard times. There were times we cried and there were times we laughed. But such is life. I am thankful that God saw me fit to grant me a chance with you. I am thankful for you to give me a chance too. I know I am not the easiest person to be with. I also know ki I get too busy in my life sometimes. But, Jaan, I swear that I love you and I will never stop loving you.
+    </p>
+    <p>
+      Consider this little website a gift from me to you for our nine-month anniversary. A simple picture gallery so that we may remain with one another always. Now, you will never have to worry about not having my pics.
+    </p>
+    <p>
+      I have intentionally designed the home page to look like VMC login page so that in case you ever for get to open this site in incognito mode and your mom happens to open it, she sees the VMC login page. Also, on a failed login, the site will redirect you to the actual VMC login page. This shall prevent suspicions. Site ka domain also starts with "vidyamandir," again to prevent suspicions. I have also tested the login functionality to ensure ki this site is 100% safe. Also, this site has no register option to none else can access it until they have been granted a login ID and password by me. This, however, does pose a bit of a problem: Even your ID and password will be granted by me...so I will know your password at all times...I am extremely sorry that it has to be this way but it was the only way for me to ensure that nobody else can access the website....The pictures we upload on the website are stored encyptedly. So, no one can access them.
+    </p>
+    <p>
+      I hope you like the website I have made.
+      <br>
+      With Love,
+      <br>
+      Aadi
+    </p>
+  </div>
+  <div class="Latest_Single_Pictures m-5">
+    <h1 class="text-center m-5" style="font-family:cursive; font-size:300%">Latest Pictures</h1>
+    <div class="container">
+      <div class="row gx-5">
+        {% for pic in latest_imgs %}
+          <div class="col">
+            <div class="card">
+              <img src="{{ pic.picture.url }}" class="card-img-top" alt="...">
+              <div class="card-body">
+                {% if pic.caption != "" %}
+                  <p class="card-text">{{ pic.caption }}</p>
+                {% else %}
+                  <p class="card-text">No caption</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="Latest_Gallery m-5">
+    <h1 class="text-center m-5" style="font-family:cursive; font-size:300%">Latest Gallery</h1>
+    <div class="container">
+      <div class="row gx-5">
+        <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel" style="background-color:rgba(0,0,0,0.9) !important;">
+          <div class="carousel-indicators">
+            {% for i in latest_gallery %}
+              {% if forloop.counter0 == 0 %}
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" ></button>
+              {% else %}
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="" aria-current="true" aria-label="Slide 1" ></button>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="carousel-inner">
+            {% for picture in latest_gallery %}
+              {% if forloop.first %}
+                <div class="carousel-item active">
+                  <img src="{{ picture.image.url }}" class="d-block w-100" alt="...">
+                </div>
+              {% else %}
+                <div class="carousel-item">
+                  <img src="{{ picture.image.url }}" class="d-block w-100" alt="...">
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

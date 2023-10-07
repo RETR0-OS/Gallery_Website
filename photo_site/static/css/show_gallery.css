@@ -1,0 +1,17 @@
+.img-box{
+  margin: 0 1%;
+}
+
+.img-box img{
+  width:100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  margin: 5% auto 0;
+  box-sizing: border-box;
+}

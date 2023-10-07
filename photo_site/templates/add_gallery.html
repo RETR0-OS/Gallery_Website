@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block imports %}
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/add_gallery.css' %}">
+{% endblock %}
+
+{% block add_gallery_link %}
+active
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+      <h1 style="text-align:center; font-size:5em;">Add A Gallery</h1>
+      <form class="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" class="form-control" required name="gallery_name" placeholder="Gallery Name">
+        <br>
+        <input type="text" class="form-control" name="gallery_caption" placeholder="Gallery Caption">
+        <br>
+        <input type="file" name="images" required id="file-input" accept="image/png, image/jpeg" onchange="preview()" multiple>
+        <label for="file-input">
+            <i class="fas fa-upload"></i> &nbsp; Choose Photos
+        </label>
+        <p id="num-of-files">No Files Chosen</p>
+          <button type="submit" class=" form-control btn btn-primary" name="submit">Add Gallery</button>
+      </form>
+      <br><br>
+      <div id="images"></div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/add_gallery.js' %}"></script>
+{% endblock %}
